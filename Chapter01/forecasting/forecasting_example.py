@@ -1,4 +1,5 @@
 import logging
+import traceback
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -120,6 +121,7 @@ def plot_forecast(df_train: pd.DataFrame, df_test: pd.DataFrame, predicted: pd.D
         )
     except Exception as e:
         print(f"Error in fill_between: {e}")
+        traceback.print_exc()
         
     df_train.iloc[train_index-100:].plot(
         x='ds', 
@@ -131,7 +133,7 @@ def plot_forecast(df_train: pd.DataFrame, df_test: pd.DataFrame, predicted: pd.D
         marker='o'
     )
     current_ytick_values = plt.gca().get_yticks()
-    plt.gca().set_yticklabels(['{:,.0f}'.format(x) for x in current_ytick_values])
+    # plt.gca().set_yticklabels(['{:,.0f}'.format(x) for x in current_ytick_values])
     ax.set_xlabel('Date')
     ax.set_ylabel('Sales')
     plt.tight_layout()
