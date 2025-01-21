@@ -99,10 +99,10 @@ def cluster_and_label(data, create_and_show_plot=True):
     n_clusters_ = len(set(labels)) - (1 if -1 in labels else 0)
     n_noise_ = list(labels).count(-1)
 
-    # print('Estimated number of clusters: %d' % n_clusters_)
-    # print('Estimated number of noise points: %d' % n_noise_)
-    # print("Silhouette Coefficient: %0.3f"
-    #       % metrics.silhouette_score(data, labels))
+    print('Estimated number of clusters: %d' % n_clusters_)
+    print('Estimated number of noise points: %d' % n_noise_)
+    print("Silhouette Coefficient: %0.3f"
+          % metrics.silhouette_score(data, labels))
 
     run_metadata = {
         'nClusters': n_clusters_,
